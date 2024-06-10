@@ -1,0 +1,184 @@
+
+
+.bg{
+  background: linear-gradient(0deg, rgb(32, 31, 31) 0%, rgb(232, 233, 175) 100%);
+  height:calc(88vh - 100px);
+  width:100%;
+}
+
+
+
+
+
+
+
+.hero{
+   
+   /* border:2px solid red; */
+   /* padding-left:400px;
+   padding-right:400px; */
+   font-size: 52px;
+   /* font-weight: 500; */
+   /* position: absolute; */
+   /* left:25%; */
+   /* top:50px; */
+   width:90%;
+   text-align: center;
+   margin:auto;
+   padding-top:70px;
+  
+   color:white;
+   color:black;
+ 
+   letter-spacing: -4px;
+  
+
+}
+
+.whiteText {
+  color: white;
+}
+
+
+.quote{
+ letter-spacing: 0;
+ /* border:2px solid red; */
+ /* width:110%; */
+ margin:auto;
+ margin-top:20px;
+ /* position: relative;
+ right:40px; */
+}
+
+
+
+.btnhover {
+  color: rgb(255, 255, 255);
+ 
+  background-color: #222222; 
+  padding: 10px 17px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  letter-spacing: 0px;
+  transition: all 0.5s ease 0s;
+}
+.btnhover:hover {
+  box-shadow: none;
+} 
+
+
+
+
+@media only screen and (max-width: 544px) {
+  .animation{
+    /* border:2px solid red; */
+    display: none;
+  }
+  .btnhover{
+    margin-top: 50px;
+    /* border:2px solid red; */
+  }
+  .hero{
+ 
+    /* border:2px solid red; */
+    /* padding-left:400px;
+    padding-right:400px; */
+    font-size: 52px;
+    /* font-weight: 500; */
+    /* position: absolute; */
+    /* left:25%; */
+    top:50px;
+    width:90%;
+    text-align: center;
+    margin:auto;
+    padding-top:50px;
+  
+   
+ 
+ }
+}
+
+
+
+
+
+
+
+.intro{
+    /* border:2px solid red; */
+    padding-left: 150px;
+    padding-right: 150px;
+     text-align: justify;
+     font-size: 18px;
+     line-height: 32px;
+     color:#000000;
+     padding-top: 80px;
+     padding-bottom: 80px;
+
+}
+
+@media only screen and (max-width: 1032px) {
+    .heroline{
+     
+      font-size:60px;
+      
+      /* border:2px solid red; */
+  }
+  
+  
+  }
+  @media only screen and (max-width:819px) {
+    .heroline{
+      /* top:100px; */
+      margin-left:80px;
+      margin-right:50px;
+      /* width:500px; */
+      /* left:0px; */
+      /* border:2px solid red; */
+      font-size:50px;
+      
+      
+  }
+}
+  @media only screen and (max-width:935px) {
+    .intro{
+       /* border:2px solid red; */
+      padding-left: 20px;
+      padding-right: 20px;
+      
+      
+  }
+  
+  
+  }
+  @media only screen and (max-width:460px) {
+    .heroline{
+      top:100px;
+      font-size:50px;
+      margin-left: 15px;
+      margin-right: 10px;
+      
+      
+  }
+  
+  
+}
+  @media only screen and (max-width:508px) {
+    .hero{
+   
+      padding-top:30px;
+     
+      /* border:2px solid red; */
+   
+   }
+    
+    .intro h1{
+      
+      font-size: 24px;
+      
+  }
+  
+  
+}

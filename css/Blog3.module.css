@@ -1,0 +1,112 @@
+/* Add this to Blog3.module.css */
+
+.hover-effect-wrapper {
+  position: relative;
+  overflow: hidden; /* Prevent overflow when scaling */
+}
+
+.hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform 0.3s ease;
+}
+
+.hover-overlay {
+  position: absolute;
+  bottom: -100%; /* Start off screen */
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.5)); /* Black with some transparency */
+  transition: bottom 0.3s ease;
+  pointer-events: none; /* Ensure overlay does not interfere with hover */
+}
+
+.hover-effect-wrapper:hover .hover-effect {
+  transform: scale(1.1); /* Scale image */
+}
+
+.hover-effect-wrapper:hover .hover-overlay {
+  bottom: 0; /* Move overlay to cover the image */
+}
+
+.heading {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* border:2px solid red; */
+  color: white;
+  z-index: 1; /* Ensure the heading is above the overlay */
+  width: calc(100% - 20px);
+  transition: all 1s ease;
+  max-height: 20px; /* Initially constrain to single line */
+  overflow: hidden;
+  opacity: 1;
+  padding-bottom: 30px;
+}
+
+.short-heading {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 700;
+  margin-bottom: 10px;
+  /* border:2px solid red; */
+
+}
+
+.full-content {
+  text-align: justify;
+  display: block; /* Initially visible but constrained */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease, opacity 1s ease;
+  opacity: 0;
+  /* padding-left: 30px; */
+  padding-right: 70px;
+  padding-bottom: 10px;
+  /* border:2px solid red; */
+}
+
+.hover-effect-wrapper:hover .heading {
+  max-height: 500px; /* Expand to show full content on hover */
+  opacity: 1;
+}
+
+.hover-effect-wrapper:hover .full-content {
+  max-height: 500px; /* Expand to show full content on hover */
+  opacity: 1;
+}
+
+.read-more-btn {
+  position: absolute;
+  bottom: 0;
+  right: -40px;
+  transform: translate(-50%, -50%);
+  background: rgba(79, 57, 57, 0);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  border: 2px solid white;
+  color: white;
+  transition: opacity 1s ease 1s;
+}
+
+.hover-effect-wrapper:hover .read-more-btn {
+  opacity: 1;
+}
+
+
+@media only screen and (max-width: 500px) {
+  
+  .full-content {
+  padding-right: 0px;
+  padding-bottom: 0px;
+  /* border:2px solid red; */
+}
+}
