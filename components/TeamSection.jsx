@@ -6,7 +6,7 @@ const teamMembers = [
     role: 'CEO-Founder',
   },
   {
-    name: 'Usha Rani',
+    name: 'Arjun Khurana',
     role: 'CFO',
   },
   {
