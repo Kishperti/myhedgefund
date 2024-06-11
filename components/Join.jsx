@@ -47,6 +47,7 @@ const Join = () => {
 <select name="service" id="service" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
  <option value="" disabled>Select</option>
  <option value="Business Consulting">Business Consulting</option>
+ <option value="Investment consultancy">Investment consultancy</option>
  <option value="Tag Regulatory and Finance Consulting">Tag Regulatory and Finance Consulting</option>
  <option value="ESG and Risk Consulting">ESG and Risk Consulting</option>
  <option value="Asset Evaluation & Portfolio Assessment">Asset Evaluation & Portfolio Assessment</option>
@@ -71,7 +72,7 @@ const Join = () => {
 </div>
 
 <div class="mb-4">
-<label for="investment_amount" class="block text-gray-700 font-bold mb-2">Amount Of Investment</label>
+<label for="investment_amount" class="block text-gray-700 font-bold mb-2">Amount</label>
 <input type="number" name="name" id="investment_amount" required placeholder="Amount Of Investment" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" />
 </div>
 

@@ -50,7 +50,7 @@ const NavBar = () => {
           <Link onClick={toggleMenu} href="/our-story" className={`${styles.a} ${navFont.className} ${styles.speca}`}>Our Story</Link>
           <Link onClick={toggleMenu} href="/contact-us" className={`${styles.a} ${navFont.className}`}>Contact Us</Link>
           <Link onClick={toggleMenu} href="/services" className={`${styles.a} ${navFont.className}`}>Services</Link>
-          <Link onClick={toggleMenu} href="/our-team" className={`${styles.a} ${navFont.className}`}>Our Team</Link>
+          {/* <Link onClick={toggleMenu} href="/our-team" className={`${styles.a} ${navFont.className}`}>Our Team</Link> */}
           <FontAwesomeIcon onClick={toggleMenu} className={`${styles.cross}  ${styles.a}`} icon={faXmark} />
         </div>
         </div>
