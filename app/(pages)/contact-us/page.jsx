@@ -1,104 +1,71 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import styles from '@/css/ContactUs.module.css';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faTwitter, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import NavBar from '@/components/NavBar';
 import Typewriter from "typewriter-effect";
-import { Be_Vietnam_Pro } from 'next/font/google';
 import emailjs from '@emailjs/browser';
 
-const herolineText = Be_Vietnam_Pro({
-  subsets: ["latin"],
-  weight: "600"
-});
-
 const Contact = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [result, setResult] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
-  useEffect(() => {
-    const smoothScroll = (target) => {
-      const targetElement = document.querySelector(target);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 90, // Adjusted scroll position
-          behavior: 'smooth',
-        });
-      }
-    };
-
-    const handleGetStartedClick = () => {
-      smoothScroll('#contact');
-    };
-
-    const getStartedButton = document.getElementById('getStartedButton');
-    if (getStartedButton) {
-      getStartedButton.addEventListener('click', handleGetStartedClick);
-    }
-
-    return () => {
-      if (getStartedButton) {
-        getStartedButton.removeEventListener('click', handleGetStartedClick);
-      }
-    };
-  }, []);
-
-  const emailHandler = (e) => setEmail(e.target.value);
-  const messageHandler = (e) => setMessage(e.target.value);
-
-  const submitHandler = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
-    const serviceId = 'service_kxu7ujb';
-    const templateId = 'template_8pzxrov';
-    const publicKey = 'Y_qFz207rJ84i86Mq';
+    setResult("Please wait...");
 
-    const templateParams = {
-      email,
-      message,
-      to_name: 'HedgeMyFund',
-      reply_to: 'consumer@hedgemyfunds.co.in',
-    };
-
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log("Success Sent", response);
-        setEmail('');
-        setMessage('');
-        setFormSubmitted(true);
-        setShowPopup(true);
-
-        setTimeout(() => {
-          setShowPopup(false);
-        }, 3000); // Hide popup after 3 seconds
-      })
-      .catch((error) => {
-        console.log("Error:", error);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
       });
-  }
+
+      const json = await response.json();
+      if (response.status === 200) {
+        setResult(json.message);
+        setShowPopup(true);
+      } else {
+        setResult(json.message);
+      }
+    } catch (error) {
+      setResult("Something went wrong!");
+    } finally {
+      form.reset();
+      setTimeout(() => {
+        setResult("");
+        setShowPopup(false);
+      }, 5000);
+    }
+  };
 
   return (
     <div>
-      <div className={`h-[100px] flex items-center sticky top-0 z-50 bg-black`}>
+      <div className="h-[100px] flex items-center sticky top-0 z-50 bg-black">
         <NavBar />
       </div>
 
-      <div className={`${styles.bg} ${styles.rounded} ${herolineText.className} relative`}>
-        <div className={`${styles.hero} flex flex-col items-center justify-center`}>
-          <p className={`${herolineText.className} ${styles.heroline} leading-[65px] text-center mb-10`}>
-            <p>We are Here for You.</p>
+      <div className="relative bg-yellow-400 bg-gradient-to-b from-yellow-400 via-yellow-400 to-black p-10 rounded-lg">
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-6xl font-bold leading-[65px] text-center mb-10 text-black">
+            We are Here for You.
           </p>
 
-          <p className={`m-auto text-[#DBDBDB] text-[24px] font-sans ${styles.quote} text-center`}>
+          <p className="m-auto text-[#DBDBDB] text-[24px] font-sans text-center">
             "Reach out for personalized assistance with your financial needs."
           </p>
 
-          <p className={`text-center mt-10 ${styles.animation}`}>
-            <span className="">
+          <p className="text-center mt-10">
+            <span>
               <Typewriter
                 options={{
                   strings: ["Personalized Assistance", "Get in Touch", "Financial Help"],
@@ -111,10 +78,10 @@ const Contact = () => {
 
           <Link href="/join-us">
             <button
-              className={`${styles.btnhover} mt-6 border-2 text-[14px] m-auto flex rounded-[1px] bg-transparent justify-center`}
+              className="mt-6 border-2 text-[14px] m-auto flex rounded-[1px] bg-transparent justify-center p-2 hover:bg-yellow-600 hover:text-black"
               id="getStartedButton"
             >
-              <p className={`${styles['btn-text']} ${herolineText.className} text-center`}>
+              <p className="text-center text-black font-bold">
                 Get Started
               </p>
             </button>
@@ -122,44 +89,98 @@ const Contact = () => {
         </div>
       </div>
 
-      <form action="" onSubmit={submitHandler}>
-        <section className="text-gray-600 body-font relative">
-          <div className="absolute inset-0 bg-gray-300">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4267.322935993889!2d76.68498346974731!3d30.710192829944237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee57aaaaaa93%3A0x326ffb09498c00a!2sTDS%20Tower!5e0!3m2!1sen!2sin!4v1717345033300!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              marginHeight="0"
-              marginWidth="0"
-              title="map"
-              scrolling="no"
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-          <div className="container px-5 py-24 mx-auto flex">
-            <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
-              <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">Contact us</h2>
-              <p className="leading-relaxed mb-5 text-gray-600">Contact us for any queries or support. We will reach you shortly.</p>
-              <div className="relative mb-4">
-                <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                <input type="email" id="email" name="email" value={email} onChange={emailHandler} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+      <section className="text-gray-600 body-font relative py-12">
+        <div className="absolute inset-0 bg-gray-300">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4267.322935993889!2d76.68498346974731!3d30.710192829944237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee57aaaaaa93%3A0x326ffb09498c00a!2sTDS%20Tower!5e0!3m2!1sen!2sin!4v1717345033300!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            title="map"
+            scrolling="no"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center justify-end">
+          <div className="bg-white p-10 rounded-lg shadow-md z-10 md:w-1/2 lg:w-1/3">
+            <form onSubmit={handleSubmit}>
+              <input type="hidden" name="access_key" value="fec086a8-4873-4070-9bcf-d84bf7968f0a" />
+              <input type="hidden" name="subject" value="New Submission from Web3Forms" />
+              <input type="checkbox" name="botcheck" style={{ display: "none" }} />
+
+              <div className="mb-6">
+                <label htmlFor="name" className="block mb-2 text-sm text-gray-600">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your name here...."
+                  required
+                  className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                />
               </div>
-              <div className="relative mb-4">
-                <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-                <textarea id="message" name="message" value={message} onChange={messageHandler} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+              <div className="mb-6">
+                <label htmlFor="email" className="block mb-2 text-sm text-gray-600">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your e-mail here...."
+                  required
+                  className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                />
               </div>
-              <button className="text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded text-lg">Submit</button>
-            </div>
+              <div className="mb-6">
+                <label htmlFor="phone" className="text-sm text-gray-600">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="Your contact no...."
+                  required
+                  className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="message" className="block mb-2 text-sm text-gray-600">
+                  Your Message
+                </label>
+                <textarea
+                  rows="5"
+                  name="message"
+                  id="message"
+                  placeholder="Your Message......."
+                  required
+                  className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+                ></textarea>
+              </div>
+              <div className="mb-6">
+                <button type="submit" className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">
+                  Send Message
+                </button>
+              </div>
+              <p className="text-base text-center text-gray-400" id="result">{result}</p>
+            </form>
           </div>
-        </section>
-      </form>
+        </div>
+      </section>
 
       {showPopup && (
-        <div className={`${styles.popup} ${showPopup ? styles.show : ''}`}>
-          <p>Thank you! Your message has been sent successfully.</p>
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-5 rounded-lg">
+            <p>Thank you! Your message has been sent successfully.</p>
+            <button onClick={() => setShowPopup(false)} className="mt-2 px-4 py-2 bg-indigo-500 text-white rounded">Close</button>
+          </div>
         </div>
       )}
     </div>
