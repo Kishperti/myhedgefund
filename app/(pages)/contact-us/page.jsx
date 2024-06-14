@@ -50,11 +50,21 @@ const Contact = () => {
 
   return (
     <div>
-      <div className="h-[100px] flex items-center sticky top-0 z-50 bg-black">
+      <div
+        className="h-[100px] flex items-center sticky top-0 z-50"
+        style={{
+          background: 'black',
+        }}
+      >
         <NavBar />
       </div>
 
-      <div className="relative bg-yellow-400 bg-gradient-to-b from-yellow-400 via-yellow-400 to-black p-10 rounded-lg">
+      <div 
+        className="relative bg-yellow-400 bg-gradient-to-b from-yellow-400 via-yellow-400 to-black p-10 rounded-lg"
+        style={{
+          background: 'linear-gradient(0deg, rgb(32, 31, 31) 0%, rgb(232, 233, 175) 100%)',
+        }}
+      >
         <div className="flex flex-col items-center justify-center">
           <p className="text-6xl font-bold leading-[65px] text-center mb-10 text-black">
             We are Here for You.

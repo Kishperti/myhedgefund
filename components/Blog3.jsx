@@ -19,7 +19,7 @@ const Blog3 = () => {
         <div className={`bg-white w-full md:w-[50%] h-[300px] md:h-[600px] relative ${styles['hover-effect-wrapper']}`}>
           <div className={styles['hover-effect']}>
             <Image
-              src="/right2.jpg"
+              src="/riskAnalysis.png"
               alt="alt"
               layout="fill"
               objectFit="cover"
@@ -43,7 +43,7 @@ const Blog3 = () => {
             <div className={`bg-pink-800 w-[50%] h-[300px] relative ${styles['hover-effect-wrapper']}`}>
               <div className={styles['hover-effect']}>
                 <Image
-                  src="/right1.jpg"
+                  src="/structuring.png"
                   alt="alt"
                   layout="fill"
                   objectFit="cover"
@@ -64,7 +64,7 @@ const Blog3 = () => {
             <div className={`bg-pink-600 w-[50%] h-[300px] relative ${styles['hover-effect-wrapper']}`}>
               <div className={styles['hover-effect']}>
                 <Image
-                  src="/right3.jpg"
+                  src="/compilance.png"
                   alt="alt"
                   layout="fill"
                   objectFit="cover"
@@ -88,7 +88,7 @@ const Blog3 = () => {
             <div className={`bg-violet-400 w-[50%] h-[300px] relative ${styles['hover-effect-wrapper']}`}>
               <div className={styles['hover-effect']}>
                 <Image
-                  src="/right4.jpg"
+                  src="/diversification.png"
                   alt="alt"
                   layout="fill"
                   objectFit="cover"
@@ -109,7 +109,7 @@ const Blog3 = () => {
             <div className={`bg-violet-800 w-[50%] h-[300px] relative ${styles['hover-effect-wrapper']}`}>
               <div className={styles['hover-effect']}>
                 <Image
-                  src="/right5.jpg"
+                  src="/investing.png"
                   alt="alt"
                   layout="fill"
                   objectFit="cover"

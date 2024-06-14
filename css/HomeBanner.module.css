@@ -1,5 +1,6 @@
 .banner {
-    background: linear-gradient(0deg, rgb(32, 31, 31) 0%, rgb(232, 233, 175) 100%);    font-size: 50px;
+    background-color: linear-gradient(0deg, rgb(32, 31, 31) 0%, rgb(232, 233, 175) 100%);    
+    font-size: 50px;
     font-weight: bold;
     color: black;
 }
