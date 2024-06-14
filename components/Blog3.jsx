@@ -43,7 +43,7 @@ const Blog3 = () => {
             <div className={`bg-pink-800 w-[50%] h-[300px] relative ${styles['hover-effect-wrapper']}`}>
               <div className={styles['hover-effect']}>
                 <Image
-                  src="/structuring.png"
+                  src="/structur.png"
                   alt="alt"
                   layout="fill"
                   objectFit="cover"
