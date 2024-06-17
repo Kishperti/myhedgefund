@@ -5,8 +5,6 @@ import NavBar from "@/components/NavBar";
 import NextTopLoader from 'nextjs-toploader';
 const inter = Inter({ subsets: ["latin"] });
 
-export const dynamic = 'auto';
-
 export const metadata = {
   title: "Home | HedgeMyFunds",
   description: "HedgeMyFunds offers comprehensive consulting services to hedge funds, including tax, regulatory & finance consulting, ESG & risk consulting, deals consulting, assurance services, and global transaction services.",
