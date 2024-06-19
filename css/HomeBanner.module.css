@@ -1,0 +1,25 @@
+.banner {
+    background-color: linear-gradient(0deg, rgb(32, 31, 31) 0%, rgb(232, 233, 175) 100%);    
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+}
+
+
+
+.btnhover {
+    color: rgb(255, 255, 255);
+   
+    background-color: #222222; 
+    padding: 7px 14px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    letter-spacing: 0px;
+  }
+  
+  
+  
+  
+  

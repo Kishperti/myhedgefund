@@ -1,0 +1,27 @@
+
+.portfoliosection{
+   /* background-color: rgb(155, 167, 50); */
+}
+
+
+
+.textred{
+    color:#1F0052
+
+}
+.portfoliobtn{ 
+    /* border:1px solid red; */
+    border-radius:1px;
+    padding:15px;
+  
+
+}
+
+
+@media only screen and (max-width: 727px) {
+    .portfoliosection {
+        /* border:2px solid red; */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+  }

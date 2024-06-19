@@ -1,0 +1,184 @@
+.container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    max-width: 100vw;
+}
+
+.container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.container section {
+    overflow: hidden;
+}
+
+.container section > div {
+    margin-bottom: 20px;
+}
+
+.backgroundSection {
+    background-image: url('/assets/ConsultingImg.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 40vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding-left: 100px;
+}
+
+.backgroundSection h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 150px;
+}
+
+.backgroundSection p {
+    font-size: 16px;
+    line-height: 1.5;
+    padding-left: 150px;
+}
+
+.ContentBgSection {
+    background-color: #ffffff;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.container h3 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.services {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.services > div {
+    flex: 1 1 calc(33.333% - 20px);
+    margin: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.services img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.ourConsulting {
+    background-color: #d1d1d1;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.ourConsulting h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.ourConsulting > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 10px 0;
+}
+
+.card a {
+    color: #929292;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.centerText {
+    text-align: center;
+}
+
+/* Media Query */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 20px; /* Adjust as needed */
+    }
+
+    .backgroundSection,
+    .ContentBgSection,
+    .ourConsulting {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .backgroundSection h1,
+    .backgroundSection p,
+    .ourConsulting h1 {
+        padding-left: 20px;
+    }
+
+    .services > div {
+        flex: 1 1 100%;
+        margin: 10px 0;
+    }
+}
